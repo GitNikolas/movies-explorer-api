@@ -8,4 +8,4 @@ _______________________________________________
 * Express
 Реализованно взаимодействие сервера с базой данных **mongodb**
 
-Бэкенд размещён по адресу: [https://api.movies-explorer.pna.nomoredomainsrocks.ru]
+Бэкенд размещён по адресу: https://api.movies-explorer.pna.nomoredomainsrocks.ru
