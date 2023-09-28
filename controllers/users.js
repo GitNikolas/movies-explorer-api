@@ -53,11 +53,11 @@ const postUser = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  const { name } = req.body;
+  const { name, email } = req.body;
 
   return userModel.findByIdAndUpdate(
     req.user._id,
-    { name },
+    { name, email },
     { new: true, runValidators: true },
   )
     .then((response) => res.status(HTTP_STATUS_OK).send(response))
