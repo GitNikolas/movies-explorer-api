@@ -40,7 +40,8 @@ const postMovie = (req, res, next) => {
 };
 
 const getMovies = (req, res, next) => {
-  movieModel.find({})
+  const { _id } = req.user;
+  movieModel.find({ owner: _id })
     .then((response) => {
       res.status(HTTP_STATUS_OK).send(response);
     })
