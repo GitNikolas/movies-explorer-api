@@ -1,8 +1,7 @@
 const router = require('express').Router();
-const { celebrate, Joi } = require('celebrate');
 const consoleLoggerMiddleware = require('../middlewares/consoleLoggerMiddleware');
 const auth = require('../middlewares/auth');
-
+const { checkSignIn, checkSignUp } = require('../utils/validation');
 const NotFoundError = require('../errors/not-found-error');
 
 router.use(consoleLoggerMiddleware);
@@ -15,22 +14,11 @@ router.use('/users', auth, userRouter);
 
 router.use('/movies', auth, movieRouter);
 
-router.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-  }),
-}), login);
+router.post('/signin', checkSignIn(), login);
 
-router.post('/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().email().required(),
-    password: Joi.string().required(),
-    name: Joi.string().min(2).max(30),
-  }),
-}), postUser);
+router.post('/signup', checkSignUp(), postUser);
 
-router.post('/signout', signout);
+router.post('/signout', auth, signout);
 
 router.use('*', (req, res, next) => next(new NotFoundError('Запрашиваемая страница не найдена')));
 

@@ -4,12 +4,13 @@ const {
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
+const { JWT_SECRET_DEV } = require('../utils/constants');
 
 const JWT_SECRET = process.env.NODE_ENV === 'production'
   ? process.env.JWT_SECRET
-  : 'dev';
+  : JWT_SECRET_DEV;
 
-const mongoose = require('mongoose');
 const userModel = require('../models/user');
 const ConflictError = require('../errors/conflict-error');
 const BadRequestError = require('../errors/bad-request-error');
