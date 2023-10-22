@@ -25,7 +25,12 @@ mongoose.connect(DB_URL, {
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://movies-explorer.pna.nomoredomainsrocks.ru',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 
