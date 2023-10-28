@@ -69,13 +69,6 @@ const movieSchema = new mongoose.Schema({
   nameRU: {
     type: String,
     required: true,
-    validate: {
-      validator(movieName) {
-        const regex = /^[\W\d]+$/i;
-        return regex.test(movieName);
-      },
-      message: 'Введите название фильма на кириллице',
-    },
   },
   nameEN: {
     type: String,

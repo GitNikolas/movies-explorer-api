@@ -34,7 +34,7 @@ function checkMovieData() {
       // eslint-disable-next-line no-useless-escape
       thumbnail: Joi.string().required().regex(/https?:\/\/(www\.)?[\w\-\.\_\~\:\/\?\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=]+\#?$/i),
       movieId: Joi.number().required(),
-      nameRU: Joi.string().required().regex(/^[\W\d]+$/i),
+      nameRU: Joi.string().required(),
       nameEN: Joi.string().required().regex(/^[^а-яё]+$/i),
     }),
   });
