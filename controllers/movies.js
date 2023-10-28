@@ -51,7 +51,7 @@ const getMovies = (req, res, next) => {
 const deleteMovieById = (req, res, next) => {
   const { movieId } = req.params;
   const { _id } = req.user;
-  return movieModel.findById(movieId)
+  return movieModel.findOne({ movieId })
     .orFail()
     .then((film) => {
       const ownerId = film.owner.toString();
