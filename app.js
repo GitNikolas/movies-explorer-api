@@ -26,7 +26,7 @@ mongoose.connect(DB_URL, {
 const app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://movies-explorer.pna.nomoredomainsrocks.ru',
   credentials: true,
 };
 
