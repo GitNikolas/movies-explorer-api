@@ -63,6 +63,9 @@ const updateUser = (req, res, next) => {
   )
     .then((response) => res.status(HTTP_STATUS_OK).send(response))
     .catch((err) => {
+      if (err.code === 11000) {
+        return next(new ConflictError('Пользователь с таким email уже существует'));
+      }
       if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequestError(`Некорректные данные: ${err.name}`));
       }
